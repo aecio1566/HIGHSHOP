@@ -9,23 +9,23 @@ cadastro = dict()
 hoje = datetime.date.today()
 while True:
     cadastro.clear
-    #pagina de cadastro
-    cadastro["tipo_evento"] = str(input("Qual o produto deseja cadastrar [X] Calcados [Y] Parte superior [Z] Parte inferior.\n")).upper()[0]
+    #pagina de cadastro de produto e drops
+    cadastro["tipo_produto"] = str(input("Qual o produto deseja cadastrar [X] Calcados [Y] Parte superior [Z] Parte inferior.\n")).upper()[0]
     while True:
-        if cadastro["tipo_evento"] == 'X':
+        if cadastro["tipo_produto"] == 'X':
             print('Opcao cadstrada: Calcadaos')
             print('-'*30)
-        if cadastro["tipo_evento"] == 'Y':
+        if cadastro["tipo_produto"] == 'Y':
             print('Opcao cadastrada: Parte superior')
             print('-'*30)
-        if cadastro["tipo_evento"] == 'Z':
+        if cadastro["tipo_produto"] == 'Z':
               print("Opcao cadastrada como: Parte inferior")
               print('-'*30)          
         else: 
              break
     
     cadastro["nome"] = str(input("Qual o nome do produto\n"))
-    cadastro["local"] = str(input("Qual estado do produto?\n"))
+    cadastro["estado"] = str(input("Qual estado do produto?\n"))
     #Opçao de drop:
     cadastro['resp']= str(input("Deseja criar um drop para seu produto? [S/N]\n" )).upper()[0]
     
@@ -59,11 +59,11 @@ while True:
         break  
 
 print('-' * 30)
-print(f"O seu produto foi classificado como: {cadastro['tipo_evento']} \n")
+print(f"O seu produto foi classificado como: {cadastro['tipo_produto']} \n")
 print('-' * 30)
 print(f"O produto foi cadastrada como: {cadastro['nome']}\n") 
 print('-' * 30)
-print(f"O estado do produto cadastro foi: {cadastro['local']}\n")
+print(f"O estado do produto cadastro foi: {cadastro['estado']}\n")
 print('-' * 30)
 print(f"O Horário flimite para as vendas foi: {cadastro['horario']} 'horas'\n")
 print('-' * 30)
