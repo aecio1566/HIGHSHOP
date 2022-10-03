@@ -6,12 +6,14 @@
 -Chat interativo;
 -Acesso a catalogos de diferentes vendedores;
 -Notas dos compradores
+-Sistema de drops de roupas
 
-Implementações futuras:
+
+#Implementações futuras:
 -Entregas feitas pelo proprio site/aplicativo;
 -Moderação e filtragem dos vendedores e compradores;
 
-Tecnologias:
+#Tecnologias:
 Python-Django;
 HTML/CSS;
 
