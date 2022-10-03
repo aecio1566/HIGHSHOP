@@ -18,10 +18,10 @@ Python-Django;
 HTML/CSS;
 
 #Autores:
-Aécio Laurentino
-Antonio 
-Brunna Pontual
-Eduardo Melo
-Guilherme Laurindo
-Pedro Coutinho
+Aécio Laurentino,
+Antonio Valença,
+Brunna Pontual,
+Eduardo Melo,
+Guilherme Laurindo,
+Pedro Coutinho.
 
