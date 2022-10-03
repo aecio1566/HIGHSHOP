@@ -20,10 +20,10 @@ while True:
                 
             print("\n\nCadastro realizado com sucesso!")
             
-            emailsenha = f"{email}{senha}"
+            emailsenha = f"{email}{senha}\n"
             
             f = open("cadastros.txt", "a")
-            f.writelines(emailsenha, "\n")
+            f.writelines(emailsenha)
             f.close()
             break
         time.sleep(2)
@@ -94,7 +94,7 @@ while True:
             
             f.close()
             clear_console()
-            print("Login realizado com sicesso!")
+            print("Login realizado com sucesso!")
             time.sleep(2)
             clear_console()
             exit()
