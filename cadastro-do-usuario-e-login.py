@@ -1,6 +1,7 @@
 import os
 import time
 
+
 def clear_console():
     os.system('cls')
     
@@ -8,7 +9,7 @@ def delayed_clear_console(n):
     time.sleep(n)
     clear_console()
 
-def cadastro():
+def cadastroCliente():
     while True:
         email = input("Digite o e-mail que deseja cadastrar: ")
         senha = input("Digite a senha que deseja cadastrar: ")
@@ -19,11 +20,12 @@ def cadastro():
             
         clear_console()
         
-        emailsenha = f"{email}{senha}\n"
+        emailsenha = f"{email}{senha}"
         
-        f = open("cadastros.txt", "a")
+        f = open("cadastroscliente.txt", "a")
         f.close()
-        f = open("cadastros.txt", "r")
+        
+        f = open("cadastroscliente.txt", "r")
         a = f.read()
         f.close()
         
@@ -41,11 +43,75 @@ def cadastro():
                     cadastrar1 = input("Deseja realizar o login [s/n]").lower()
                     clear_console()
         
-        else:  
+        else:
+            nome = input("Digite seu 1º nome: ")
+            sobrenome = input("Digite seu(s) sobrenome(s): ")
+            nomesobrenomeCe = f"{nome}{sobrenome}"
+            nomesobrenomeSe = nomesobrenomeCe.replace(" ", "")
+            
+            idade = input("Digite sua idade [dd/mm/aaaa]: ")
+            idade = idade.replace("/", "")
+            
+            linhas = f"{emailsenha}/{nomesobrenomeSe}/{idade}\n"
+            
             print("Cadastro realizado com sucesso!")
             
-            f = open("cadastros.txt", "a")
-            f.writelines(emailsenha)
+            f = open("cadastroscliente.txt", "a")
+            f.writelines(linhas)
+            f.close()
+            
+            delayed_clear_console(2)
+            exit()
+            
+def cadastroEmpresas():
+    while True:
+        email = input("Digite o e-mail que deseja cadastrar: ")
+        senha = input("Digite a senha que deseja cadastrar: ")
+        senhav = input("Digite a senha novamente: ")
+        
+        while senha != senhav:
+            senhav = input("A senha não corresponde! Digite novamente: ")
+            
+        clear_console()
+        
+        emailsenha = f"{email}{senha}"
+        
+        f = open("cadastrosempresas.txt", "a")
+        f.close()
+        
+        f = open("cadastrosempresas.txt", "r")
+        a = f.read()
+        f.close()
+        
+        if emailsenha in a:
+            cadastrar1 = input("Esse email já está cadastrado!\n\nDeseja realizar o login [s/n]").lower()
+            if cadastrar1 == 's':
+                login()
+            
+            else:
+                while cadastrar1 not in 'sn':
+                    print("Formato não aceito!")
+                    
+                    delayed_clear_console(2)
+                    
+                    cadastrar1 = input("Deseja realizar o login [s/n]").lower()
+                    clear_console()
+        
+        else:
+            nomeempresa = input("Digite o nome da sua empresa: ")
+            nomeempresaSe = nomeempresa.replace(" ", "")
+            
+            cnpj = input("Digite o CNPJ [apenas números]: ")
+            
+            endereco = input("Digite o endereço da sua empresa [rua, nº(apenas números), bairro]")
+            endereco = endereco.replace(",.-_ ", "")
+            
+            linhas = f"{emailsenha}/{nomeempresaSe}/{endereco}/{cnpj}\n"
+            
+            print("Cadastro realizado com sucesso!")
+            
+            f = open("cadastroempresas.txt", "a")
+            f.writelines(linhas)
             f.close()
             
             delayed_clear_console(2)
@@ -57,14 +123,27 @@ def login():
         senha = input("Senha: ")
         emailsenha = f"{email}{senha}"
         
-        f = open("cadastros.txt", "r")
+        f = open("cadastroscliente.txt", "a")
+        f.close()
+        
+        g = open("cadastrosempresas.txt", "a")
+        g.close()
+        
+        f = open("cadastroscliente.txt", "r")
+        g = open("cadastrosempresas.txt", "r")
         
         t = f.read()
+        u = g.read()
         
-        if emailsenha not in t:
+        if emailsenha not in t or emailsenha not in u:
             f.close()
-            f = open("cadastros.txt", "r")
+            g.close()
+            
+            f = open("cadastroscliente.txt", "r")
+            g = open("cadastrosempresas.txt", "r")
+            
             t = f.read()
+            u = g.read()
             
             while True:
                 clear_console()
@@ -77,7 +156,13 @@ def login():
                     emailsenha = f"{email}{senha}"
                 
                 elif cadastrar == 's':
-                    cadastro()
+                    clienteempresa = input("""
+Digite:
+- [c] Para se cadastrar como cliente
+- [e] Para se cadastrar como empresa
+""").lower()
+                if clienteempresa == 'c':
+                    cadastroCliente()
                 
                 else:
                     clear_console()
@@ -86,13 +171,19 @@ def login():
                     delayed_clear_console(2)
                 
                 f.close()
-                f = open("cadastros.txt", "r")
-                t = f.read()
+                g.close()
                 
-                if emailsenha in t:
+                f = open("cadastroscliente.txt", "r")
+                g = open("cadastrosempresas.txt", "r")
+                
+                t = f.read()
+                u = g.read()
+                
+                if emailsenha in t or emailsenha in u:
                     break
         
         f.close()
+        g.close()
         clear_console()
         print("Login realizado com sucesso!")
         delayed_clear_console(2)
@@ -104,7 +195,31 @@ while True:
     cadastrado = input("Você já é cadastrado [s/n]?\n").lower()
     
     if cadastrado == 'n':
-        cadastro()
+        clienteempresa = input("""
+Digite:
+- [c] Para se cadastrar como cliente
+- [e] Para se cadastrar como empresa
+""").lower()
+        
+        if clienteempresa == 'c':
+            cadastroCliente()
+        
+        elif clienteempresa == 'e':
+            cadastroEmpresas()
+        
+        else:
+            while clienteempresa not in 'ce':
+                clear_console()
+                print("Formato não aceito!\nDigite apenas [c] ou [e]")
+                delayed_clear_console()
+                clienteempresa = input("""
+Digite:
+- [c] Para se cadastrar como cliente
+- [e] Para se cadastrar como empresa
+""").lower()
+                
+                
+        
 
     elif cadastrado == 's':
         login()
