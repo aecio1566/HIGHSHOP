@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*importando uma fonte do googlefonts*/
+
+:root {
+    --primary-color: #f6f6f6;
+}
+
+* {
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--primary-color);
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    color: rgb(180, 180, 180);
+}
+
+.container {
+    max-width: 640px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.passo{
+    font-size:20px;
+    width: 32px;
+    text-align:center;
+    border-radius: 40px;
+    background: rgb(100, 24, 252);
+    color: rgb(255, 255, 255);
+    
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: black;
+    text-align: center;
+
+}
+
+form input,
+form label,
+form button {
+    display: block;
+    width: 100%;
+}
+
+form label {
+    font-size: 15px;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    color: rgba(0, 0, 0, 0.692)
+}
+
+form input {
+    font-size: 24px;
+    height: 30px;
+    padding: 0 20px;
+    border: 0.1rem solid transparent;
+    border-radius: 8px;
+    background-color: #f6f6f6;
+}
+
+form button {
+    background: white;
+    border: 0.1rem solid black;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+    border: 0.1rem solid black;
+    width: 100px;
+    margin-top: 70px;
+    position: relative;
+    left: 230px;
+}
+
+form button a {
+    text-decoration: none;
+    color: rgb(0,0,0);
+}
+form button:hover {
+    background: rgb(95, 46, 219);
+    transition: 1s;
+    border: 0.1rem solid transparent;
+}
+
+form button a:hover {
+    color: white;
+}
