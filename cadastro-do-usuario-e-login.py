@@ -49,12 +49,14 @@ def cadastroCliente():
             nomesobrenomeCe = f"{nome}{sobrenome}"
             nomesobrenomeSe = nomesobrenomeCe.replace(" ", "")
             
-            idade = input("Digite sua idade [dd/mm/aaaa]: ")
+            id = input("Digite um nome de usuário [Não pode conter espaços, acentos ou caracteres especiais, excluindo [-_.]]: ")
+            
+            idade = input("Digite sua data de nascimento [dd/mm/aaaa]: ")
             idade = idade.replace("/", "")
             
-            linhas = f"{emailsenha}/{nomesobrenomeSe}/{idade}\n"
+            linhas = f"{id}/{emailsenha}/{nomesobrenomeSe}/{idade}\n"
             
-            print("Cadastro realizado com sucesso!")
+            print(f"Cadastro realizado com sucesso!\nSeu id de cliente é: {id}")
             
             f = open("cadastroscliente.txt", "a")
             f.writelines(linhas)
@@ -104,13 +106,13 @@ def cadastroEmpresas():
             cnpj = input("Digite o CNPJ [apenas números]: ")
             
             endereco = input("Digite o endereço da sua empresa [rua, nº(apenas números), bairro]")
-            endereco = endereco.replace(",.-_ ", "")
+            endereco = endereco.replace(" ", "")
             
             linhas = f"{emailsenha}/{nomeempresaSe}/{endereco}/{cnpj}\n"
             
             print("Cadastro realizado com sucesso!")
             
-            f = open("cadastroempresas.txt", "a")
+            f = open("cadastrosempresas.txt", "a")
             f.writelines(linhas)
             f.close()
             
